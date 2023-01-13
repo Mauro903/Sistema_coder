@@ -6,7 +6,7 @@ class Curso(models.Model):
     comision = models.IntegerField() #Numerico
 
 
-class Estudiantes():
+class Estudiantes(models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
     dni = models.CharField(max_length=32)
