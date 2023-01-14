@@ -1,0 +1,21 @@
+{% extends 'estudiantes/base.html' %}
+
+{% block subtitulo %} Lista de cursos{% endblock subtitulo %}
+
+{% block estilos %}
+h1.titulos-coder{
+  color: grey;
+}
+{% endblock estilos %}
+
+{% block contenido %}
+  <div>
+  {% include "estudiantes/barra_saludo.html" %}
+    <h1 class= "titulos-coder">Lista de cursos</h1><!--creamos una clase para poder darle un estilo al titulo-->
+    <ul>
+    {% for curso in cursos %}
+      <li>{{ curso.nombre }}, {{ curso.comision }}</li>
+    {% endfor %}
+    </ul>
+  </div>
+{% endblock contenido %}
