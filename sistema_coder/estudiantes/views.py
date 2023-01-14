@@ -7,7 +7,7 @@ def inicio(request):
    
     return render(
         request=request, 
-        template_name="estudiantes/iniciar.html",
+        template_name='estudiantes/iniciar.html',
         )
 
 def listar_estudiantes(request):
@@ -16,7 +16,7 @@ def listar_estudiantes(request):
     }
     return render(
         request=request, 
-        template_name="estudiantes/Lista_estudiantes.html",
+        template_name='estudiantes/Lista_estudiantes.html',
         context=contexto,
         )
 
@@ -26,7 +26,7 @@ def listar_profesores(request):
     }
     return render(
         request=request, 
-        template_name="estudiantes/Lista_profesores.html",
+        template_name='estudiantes/Lista_profesores.html',
         context=contexto,
         )
 
@@ -38,8 +38,15 @@ def listar_cursos(request):
     }
     return render(
         request=request, 
-        template_name="estudiantes/Lista_cursos.html",
+        template_name='estudiantes/Lista_cursos.html',
         context=contexto,
         )
 
-# Create your views here.
+def crear_curso(request):
+    if request.method == "POST":
+        pass
+    else: #GET
+        return render(
+            request=request,
+            template_name= 'estudiantes/formulario_curso.html'
+        )
