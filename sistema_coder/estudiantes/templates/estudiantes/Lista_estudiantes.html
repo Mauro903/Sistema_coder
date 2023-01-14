@@ -4,6 +4,7 @@
 
 {% block contenido %}
   <div>
+  {% include "estudiantes/barra_saludo.html" %}
     <h1>Lista de estudiantes</h1>
     <ul>
     {% for student in estudiantes %}
