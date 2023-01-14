@@ -4,7 +4,11 @@ from datetime import datetime
 from estudiantes.models import Estudiantes, Profesor
 
 def saludar(request):
-    return HttpResponse(f"Hola Soy Mauro Pisani y les doy la bienvenida")
+   
+    return render(
+        request=request, 
+        template_name="estudiantes/iniciar.html",
+        )
 
 def listar_estudiantes(request):
     contexto = {
