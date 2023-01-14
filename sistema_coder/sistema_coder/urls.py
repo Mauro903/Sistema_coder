@@ -19,7 +19,7 @@ from django.urls import path, include
 from estudiantes.views import inicio
 
 urlpatterns = [
-    path("inicio/", inicio),
+    path('', inicio, name= "inicio"),
     path('admin/', admin.site.urls), 
     path("plataforma/", include("estudiantes.urls")),
 ]
