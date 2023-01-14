@@ -59,6 +59,7 @@ def crear_curso_a_mano(request):
         )
 
 def crear_curso(request):
+    """Usamos esta que es la PRO"""
     if request.method == "POST":
         formulario = CursoFormulario(request.POST)
 
@@ -68,7 +69,7 @@ def crear_curso(request):
             curso.save()
             url_exitosa = reverse("listar_cursos")
             return redirect(url_exitosa)
-    else:
+    else: #GET
         formulario = CursoFormulario()
     return render(
             request=request,
@@ -76,3 +77,21 @@ def crear_curso(request):
             context={"formulario": formulario},
             )
 
+def buscar_curso(request):
+    if request.method == "POST":
+        data = request.POST
+        cursos = Curso.objects.filter(nombre__contains=data["nombre"])
+        url_exitosa = reverse("listar_cursos")
+        contexto = {
+            "cursos": cursos
+        }
+        return render(
+            request=request, 
+            template_name="estudiantes/Lista_cursos.html",
+            context=contexto,
+        )
+    else:
+        return render(
+            request=request,
+            template_name= 'estudiantes/busqueda_curso.html'  
+        )

@@ -12,7 +12,8 @@ h1.titulos-coder{
   <div>
   {% include "estudiantes/barra_saludo.html" %}
     <h1 class= "titulos-coder">Lista de cursos</h1><!--creamos una clase para poder darle un estilo al titulo-->
-    <a href="{% url "crear_curso" %}">Añadir curso</a>
+    <a href="{% url "crear_curso" %}">Añadir</a>
+    <a href="{% url "buscar_curso" %}">Buscar</a>
     <br><br>
     <ul>
     {% for curso in cursos %}

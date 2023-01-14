@@ -1,0 +1,18 @@
+{% extends 'estudiantes/base.html' %}
+
+{% block subtitulo %}Buscar curso{% endblock subtitulo %}
+
+{% block estilos %}
+h1.titulos-coder{
+  color: violet;
+}
+{% endblock estilos %}
+
+{% block contenido %}
+  <form action= {% url "buscar_curso" %} method="post">
+    {% csrf_token %}
+    <p>Nombre del curso:</p>
+    <input type="text" name="nombre">
+    <input type="submit" value="Enviar">
+  </form>
+{% endblock contenido %}
