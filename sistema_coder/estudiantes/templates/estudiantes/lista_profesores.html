@@ -2,8 +2,16 @@
 
 {% block contenido %}
 <section>
-  <div>
+
+ <div>
     <h1>Lista de profesores</h1>
+    <ul>
+    {% for profesor in profesores %}
+      <li>{{ profesor.apellido }}, {{ profesor.nombre }}</li>
+    {% endfor %}
+    </ul>
   </div>
+
 </section>
+
 {% endblock contenido %}
