@@ -1,7 +1,6 @@
 from django.urls import path
 
-from estudiantes.views import (
-    inicio, listar_estudiantes, listar_profesores, listar_cursos, crear_curso)
+from estudiantes.views import inicio, listar_estudiantes, listar_profesores, listar_cursos, crear_curso
 
 
 urlpatterns = [

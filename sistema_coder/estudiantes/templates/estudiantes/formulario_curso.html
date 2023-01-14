@@ -9,7 +9,7 @@ h1.titulos-coder{
 {% endblock estilos %}
 
 {% block contenido %}
-  <form action="{% url 'crear_curso' %} method="post">
+  <form action= {% url "crear_curso" %} method="post">
     {% csrf_token %}
     <p>Nombre del curso:</p>
     <input type="text" name="nombre">

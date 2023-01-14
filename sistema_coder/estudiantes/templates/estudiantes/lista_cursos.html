@@ -10,8 +10,10 @@ h1.titulos-coder{
 
 {% block contenido %}
   <div>
-  {% include 'estudiantes/barra_saludo.html' %}
+  {% include "estudiantes/barra_saludo.html" %}
     <h1 class= "titulos-coder">Lista de cursos</h1><!--creamos una clase para poder darle un estilo al titulo-->
+    <a href="{% url "crear_curso" %}">Añadir curso</a>
+    <br><br>
     <ul>
     {% for curso in cursos %}
       <li>{{ curso.nombre }}, {{ curso.comision }}</li>
