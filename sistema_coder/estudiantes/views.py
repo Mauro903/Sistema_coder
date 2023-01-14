@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from estudiantes.models import Estudiantes, Profesor
 
-def saludar(request):
+def inicio(request):
    
     return render(
         request=request, 

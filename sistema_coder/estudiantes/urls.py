@@ -1,10 +1,10 @@
 from django.urls import path
 
-from estudiantes.views import saludar, listar_estudiantes, listar_profesores
+from estudiantes.views import inicio, listar_estudiantes, listar_profesores
 
 
 urlpatterns = [
-    path("saludar/",saludar, name="iniciar"),
-    path("lista-alumnos/", listar_estudiantes, name="listar_alumnos"), #El name= sirve para que si cambia la url puedo seguir teniendo el mismo nombre en el html
-    path("lista-profesores/", listar_profesores, name="listar_profesores"),
+    path("inicio/",inicio, name="iniciar"),
+    path("alumnos/", listar_estudiantes, name="listar_alumnos"), #El name= sirve para que si cambia la url puedo seguir teniendo el mismo nombre en el html
+    path("profesores/", listar_profesores, name="listar_profesores"),
 ]
