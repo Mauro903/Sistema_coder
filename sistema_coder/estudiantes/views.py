@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 from datetime import datetime
 from estudiantes.models import Estudiantes, Profesor, Curso
+from estudiantes.forms import CursoFormulario
 
 def inicio(request):
    
@@ -43,7 +44,8 @@ def listar_cursos(request):
         context=contexto,
         )
 
-def crear_curso(request):
+def crear_curso_a_mano(request):
+    """No la estamos usando"""
     if request.method == "POST":
         data = request.POST
         curso = Curso(nombre=data["nombre"], comision=data["comision"])
@@ -53,5 +55,24 @@ def crear_curso(request):
     else:
         return render(
             request=request,
-            template_name= 'estudiantes/formulario_curso.html'  
+            template_name= 'estudiantes/formulario_curso_a_mano.html'  
         )
+
+def crear_curso(request):
+    if request.method == "POST":
+        formulario = CursoFormulario(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            curso = Curso(nombre=data["nombre"], comision=data["comision"])
+            curso.save()
+            url_exitosa = reverse("listar_cursos")
+            return redirect(url_exitosa)
+    else:
+        formulario = CursoFormulario()
+    return render(
+            request=request,
+            template_name= 'estudiantes/formulario_curso.html',  
+            context={"formulario": formulario},
+            )
+
