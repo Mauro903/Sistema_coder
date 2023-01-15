@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from estudiantes.models import Estudiantes, Profesor, Curso
 from estudiantes.forms import CursoFormulario
+from django.db.models import Q
 
 def inicio(request):
    
@@ -80,8 +81,10 @@ def crear_curso(request):
 def buscar_curso(request):
     if request.method == "POST":
         data = request.POST
-        cursos = Curso.objects.filter(nombre__contains=data["nombre"])
-        url_exitosa = reverse("listar_cursos")
+        cursos = Curso.objects.filter(
+            Q(nombre__contains=data["busqueda"]) | Q(comision__exact=data["busqueda"])
+        )
+
         contexto = {
             "cursos": cursos
         }
@@ -90,8 +93,4 @@ def buscar_curso(request):
             template_name="estudiantes/Lista_cursos.html",
             context=contexto,
         )
-    else:
-        return render(
-            request=request,
-            template_name= 'estudiantes/busqueda_curso.html'  
-        )
+

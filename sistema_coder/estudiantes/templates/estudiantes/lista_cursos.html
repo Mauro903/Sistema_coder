@@ -9,16 +9,21 @@ h1.titulos-coder{
 {% endblock estilos %}
 
 {% block contenido %}
-  <div>
   {% include "estudiantes/barra_saludo.html" %}
     <h1 class= "titulos-coder">Lista de cursos</h1><!--creamos una clase para poder darle un estilo al titulo-->
     <a href="{% url "crear_curso" %}">Añadir</a>
-    <a href="{% url "buscar_curso" %}">Buscar</a>
-    <br><br>
+    <br><br><!--Este br sirve para hacer saltos de linea-->
+
+    <form action= "{% url "buscar_curso" %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="busqueda">
+        <input type="submit" value="Buscar">
+    </form>
+    <br>
+
     <ul>
     {% for curso in cursos %}
       <li>{{ curso.nombre }}, {{ curso.comision }}</li>
     {% endfor %}
     </ul>
-  </div>
 {% endblock contenido %}
