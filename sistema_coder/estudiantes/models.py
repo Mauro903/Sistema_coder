@@ -2,9 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Curso(models.Model):
-    nombre = models.CharField(max_length=64)
+    nombre = models.CharField(max_length=64) #nombre = models.CharField(max_length=64, unique= True) asi con el unique que indica solo podes poner un nombre una vez
     comision = models.IntegerField() #Numerico
-
+   # fecha_inicio = models.DateField(null=True)
+  #Se puede poner unique_together para que no se repita una combinacion
     def __str__(self):
         return f"{self.nombre}, {self.comision}"
 

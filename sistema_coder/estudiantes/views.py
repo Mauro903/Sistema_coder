@@ -82,7 +82,7 @@ def buscar_curso(request):
     if request.method == "POST":
         data = request.POST
         cursos = Curso.objects.filter(
-            Q(nombre__contains=data["busqueda"]) | Q(comision__exact=data["busqueda"])
+            Q(nombre__contains=data["busqueda"]) | Q(comision__contains=data["busqueda"])
         )
 
         contexto = {
